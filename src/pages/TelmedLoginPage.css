@@ -1,0 +1,520 @@
+/* Telemedicine Login page styles */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0ea5e9, #22c55e);
+  font-family:
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial,
+    sans-serif;
+  position: relative;
+  overflow: hidden;
+  padding: 32px 16px;
+}
+
+.ecg-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+}
+
+.ecg-line {
+  width: 100%;
+  height: 220px;
+  position: absolute;
+  top: 120px;
+  left: 0;
+}
+
+.ecg-path {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.95);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 10 10;
+  animation: dash 2.4s linear infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+.main-heading {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.welcome-title {
+  color: #fff;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin: 0;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+}
+
+.telmed-login-method {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+@media (min-width: 520px) {
+  .telmed-login-method {
+    flex-direction: row;
+  }
+}
+
+.telmed-login-method-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 14px;
+  padding: 12px 14px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 14px;
+  font-weight: 650;
+  color: #0f172a;
+}
+
+.telmed-login-method-item input {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.telmed-field-error {
+  margin: 6px 0 0 0;
+  color: #b91c1c;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.login-card,
+.otp-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 18px;
+  padding: 26px 22px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+/* Ensure input fields are visible/clickable in OTP screen */
+.otp-card.active .otp-input {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  height: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.otp-card {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+}
+
+/* When the login card is collapsed (height: 0), an absolute OTP card has no box to fill.
+   Active OTP sits in normal flow so the glass card sizes and displays correctly. */
+.otp-card.active {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.card-header h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.card-header p {
+  margin: 0;
+  color: rgba(15, 23, 42, 0.65);
+  font-size: 14px;
+}
+
+.logo {
+  width: 52px;
+  height: 52px;
+  color: #0ea5e9;
+}
+
+.login-form,
+.otp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 13px;
+  color: rgba(15, 23, 42, 0.7);
+  font-weight: 600;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(15, 23, 42, 0.04);
+  border-radius: 12px;
+  padding: 12px 12px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.input-icon {
+  color: rgba(2, 132, 199, 0.9);
+}
+
+.input-wrapper input {
+  border: none;
+  outline: none;
+  flex: 1;
+  background: transparent;
+  font-size: 14px;
+  color: #0f172a;
+}
+
+.toggle-password {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: rgba(15, 23, 42, 0.7);
+  padding: 0;
+}
+
+.form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 13px;
+  color: rgba(15, 23, 42, 0.7);
+  font-weight: 600;
+}
+
+.checkbox-wrapper input {
+  display: none;
+}
+
+.checkmark {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 2px solid rgba(14, 165, 233, 0.9);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-wrapper input:checked + .checkmark {
+  background: rgba(14, 165, 233, 0.95);
+}
+
+.checkbox-wrapper input:checked + .checkmark::after {
+  content: "";
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(-45deg);
+  margin-top: -2px;
+}
+
+.forgot-password {
+  border: none;
+  background: transparent;
+  color: #0ea5e9;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.login-button,
+.verify-button {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 14px;
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  background: linear-gradient(90deg, #0ea5e9, #22c55e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition:
+    transform 0.15s ease,
+    filter 0.15s ease;
+}
+
+.login-button:disabled,
+.verify-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.login-button:hover:not(:disabled),
+.verify-button:hover:not(:disabled) {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.button-icon {
+  opacity: 0.95;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 6px 0;
+  color: rgba(15, 23, 42, 0.4);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+}
+
+.auth-divider span {
+  padding: 0 10px;
+}
+
+.google-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.15);
+  color: rgba(15, 23, 42, 0.85);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.google-btn:hover {
+  background: rgba(15, 23, 42, 0.02);
+  transform: translateY(-1px);
+}
+
+.google-btn:active {
+  transform: translateY(0);
+}
+
+.login-button.loading,
+.verify-button.loading {
+  pointer-events: none;
+}
+
+.card-footer {
+  margin-top: 14px;
+  text-align: center;
+  color: rgba(15, 23, 42, 0.7);
+  font-size: 13px;
+}
+
+.card-footer a {
+  color: #0ea5e9;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.otp-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(8px, 2.2vw, 14px);
+  margin: 10px 0 10px;
+  max-width: 100%;
+}
+
+.otp-input {
+  width: clamp(34px, 8.5vw, 52px);
+  height: clamp(44px, 9vw, 54px);
+  border-radius: 14px;
+  border: 1px solid rgba(14, 165, 233, 0.28);
+  background: rgba(255, 255, 255, 0.78);
+  text-align: center;
+  font-size: clamp(16px, 3.5vw, 20px);
+  font-weight: 900;
+  outline: none;
+  color: #0f172a;
+  transition:
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.12s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.otp-input:focus {
+  border-color: rgba(14, 165, 233, 0.85);
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.18);
+  transform: translateY(-1px);
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-6px);
+  }
+  40%,
+  80% {
+    transform: translateX(6px);
+  }
+}
+
+.otp-input.shake {
+  animation: shake 0.45s;
+}
+
+.otp-actions {
+  margin: 6px 0 6px;
+}
+
+.resend-text {
+  margin: 0;
+  text-align: center;
+  color: rgba(15, 23, 42, 0.65);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.resend-link {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #0ea5e9;
+  font-weight: 900;
+  padding: 0;
+  text-decoration: none;
+}
+
+.back-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px;
+  color: rgba(15, 23, 42, 0.6);
+}
+
+.developer-tag {
+  margin-top: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.telmed-alert {
+  margin: 0 0 12px 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.telmed-alert-error {
+  background: rgba(239, 68, 68, 0.12);
+  color: #b91c1c;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.telmed-alert-success {
+  background: rgba(34, 197, 94, 0.12);
+  color: #15803d;
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.link-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  color: #0ea5e9;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.instadev {
+  color: #fff;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}

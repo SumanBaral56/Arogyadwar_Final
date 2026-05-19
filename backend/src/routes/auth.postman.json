@@ -1,0 +1,89 @@
+{
+  "info": {
+    "name": "Telemedicine Auth API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "item": [
+    {
+      "name": "Signup",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/signup",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "signup"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"John Doe\",\n  \"contactMethod\": \"email\",\n  \"email\": \"john@example.com\",\n  \"password\": \"Password123\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "login"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contactMethod\": \"email\",\n  \"email\": \"john@example.com\",\n  \"password\": \"Password123\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Forgot Password - Request OTP",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/forgot-password/request-otp",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "forgot-password", "request-otp"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contactMethod\": \"email\",\n  \"email\": \"john@example.com\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Forgot Password - Verify OTP",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/forgot-password/verify-otp",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "forgot-password", "verify-otp"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contactMethod\": \"email\",\n  \"email\": \"john@example.com\",\n  \"otp\": \"123456\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Forgot Password - Reset Password",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/forgot-password/reset-password",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "forgot-password", "reset-password"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contactMethod\": \"email\",\n  \"email\": \"john@example.com\",\n  \"otp\": \"123456\",\n  \"newPassword\": \"Password1234\"\n}"
+        }
+      }
+    }
+  ]
+}
